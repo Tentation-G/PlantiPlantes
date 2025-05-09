@@ -24,6 +24,7 @@ function inscription() {
                 // Démarrer la session et stocker les informations de l'utilisateur
                 $_SESSION['user'] = [
                     'id' => $user['id'],
+                    'user_id' => $user['id'],
                     'email' => $user['email'],
                     'nom' => $user['nom'],
                     'prenom' => $user['prenom'],
@@ -125,20 +126,17 @@ function connexion() {
             if ($user) {
                 // Verif si le mdp est le bon
                 if (password_verify($pass, $user['pass'])) {
-                    //change le status de connexion a true
-                    setUserConnected($user['id']);
 
                     // start + stock les info si le rest est good
                     $_SESSION['user'] = [
                         'id' => $user['id'],
+                        'user_id' => $user['id'],
                         'email' => $user['email'],
                         'nom' => $user['nom'],
                         'prenom' => $user['prenom'],
                         'tel' => $user['tel'],
                         'id_role' => $user['id_role']
                     ];
-                    // Log de connexion
-                    logUserAction($user['id'], 'connexion');
                     // Redirection backOffice si Admin Sinon Home
                     if (isAdmin() or isMod()) {
                         $_SESSION['message'] = "Vous êtes bien connecté.";
@@ -162,12 +160,6 @@ function connexion() {
 }
 
 function deconnexion() {
-    // Log de déconnexion
-    logUserAction($_SESSION['user']['id'], 'deconnexion');
-
-    //change le status de connexion a false
-    setUserDisconnected($_SESSION['user']['id']);
-
     // Supprime la session utilisateur
     unset($_SESSION['user']);
     $_SESSION['message'] = "Vous êtes bien déconnecté.";
@@ -176,21 +168,6 @@ function deconnexion() {
     header("location:" . URL . "index.php");
     exit();
 }
-
-function updateUserView() {
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $userForUpdate = getUserById($id); // Utilisez la fonction corrigée
-        if ($userForUpdate) {
-            require('views/user/updateUserView.php');
-        } else {
-            echo "Utilisateur non trouvé.";
-        }
-    } else {
-        echo "ID de l'utilisateur non fourni.";
-    }
-}
-
 
 function compte() {
     require('views/user/compte.php');

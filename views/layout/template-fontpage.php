@@ -16,12 +16,6 @@
     <script src="<?= URL_ASSETS;?>js/main.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://kit.fontawesome.com/81e489c8c5.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-        // Injecter les données PHP dans le JavaScript
-        const connectedUsers = <?= $connected; ?>;
-        const disconnectedUsers = <?= $disconnected; ?>;
-    </script>
     <script src="<?= URL_ASSETS;?>js/charts.js" defer></script>
 
 </head>
@@ -39,9 +33,12 @@
                 </div>
                 <nav class="nav-links">
                     <ul>
-                        <li><a href="">Fleurs</a></li>
-                        <li><a href="">Tables</a></li>
-                        <li><a href="">Velos</a></li>
+                        <li><a href="<?= URL; ?>?p=homeFleurs">Fleurs</a></li>
+                        <li><a href="<?= URL; ?>?p=homeTables">Tables</a></li>
+                        <li><a href="<?= URL; ?>?p=homeVelos">Velos</a></li>
+                        <?php if (isConnect()): ?>
+                            <li><a href="<?= URL; ?>?p=cart">Panier</a></li>
+                        <?php endif; ?>
                         <?php if (isConnect()): ?>
                             <li><a href="<?= URL; ?>?p=compte">Mon espace</a></li>
                         <?php endif; ?>
@@ -133,7 +130,7 @@
 
                 <div class="footer-el">
                     <h1>NewLetter</h1>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <p>Decouvrez notre newletter.</p>
                     <form action="" method="post">
                         <input type="email" name="" id="">
                         <button type="submit" name="bouton">

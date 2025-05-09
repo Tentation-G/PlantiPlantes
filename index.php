@@ -6,12 +6,13 @@ require ('core/function.php');
 require('controllers/userController.php');
 require('controllers/adminController.php');
 require('controllers/homeController.php');
+require('controllers/cartController.php');
 
 //http://localhost/projet/plantes-mvc/?p=inscription
 if(isset($_GET['p'])){
 
     switch ($_GET['p']) {
-        //
+        // Sign in / log in / log out
         case 'inscription':
                 inscription();
             break;
@@ -22,12 +23,39 @@ if(isset($_GET['p'])){
                 deconnexion();
             break;
         
-        //
+        // User
         case 'compte':
                 compte();
             break;
         
-        //
+        // home pages
+        case 'home':
+                home();
+            break;
+        case 'homeFleurs':
+                homeFleurs();
+            break;
+        case 'homeTables':
+                homeTables();
+            break;
+        case 'homeVelos':
+                homeVelos();
+            break;
+        
+        // Panier
+        case 'addToCart':
+            addToCart();
+            break;
+        
+        case 'cart':
+            viewCart();
+            break;
+        
+        case 'removeFromCart':
+            removeFromCart();
+            break;
+        
+        // admin
         case 'backOffice':
                 backOffice();
             break;
@@ -35,16 +63,9 @@ if(isset($_GET['p'])){
                 addProduct();
             break;
         
-        //
-        case 'updateUserView':
-                updateUserView();
-            break;
-        // case 'updateUserAction':
-        //     updateUserAction();
-        //     break;
-        
         default:
-                page404();
+                //page404();
+                home();
             break;
     }
     

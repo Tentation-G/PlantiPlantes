@@ -2,62 +2,8 @@
 
 ?>
 <div class="container">
-    <div class="data">
-        <?php 
-            echo "User Co : " . getAllConnectedUsers() . "<br>";
-            echo "User Deco : " . getAllDisconnectedUsers() . "<br>";
-        ?>
-    </div>
-    <?php
-
-        $data = getUserStatusCounts();
-        $connected = $data['connected'];
-        $disconnected = $data['disconnected'];
-
-    ?>
-    
-    
     <!-- User Part | Connection Graph | User List Card | User List Tab -->
     <div class="container ">
-        <!-- User card + Connection Graph -->
-        <section class="sectionBo1">
-            <div class="user-card-container">
-                <?php
-                $users = getAllUsersCard();
-                $roles = [
-                    '1' => 'admin', 
-                    '2' => 'mod', 
-                    '3' => 'user'
-                ];
-                $connectedCss = [
-                    '1' => 'connectedColor',
-                    '0' => 'discconnectedColor'
-                ];
-
-                foreach ($users as $user): 
-                    $userRoleBorder = $roles[$user['id_role']] ?? null;
-                    $connectionStatusColor = $connectedCss[$user['is_connected']] ?? null;
-                ?>
-                <div class="user-card-wrapper <?= $userRoleBorder ?>">
-                    <h2><?= $user['id'] ?></h2>
-                    <div class="user-icon-wrapper <?= $connectionStatusColor ?>">
-                        <svg fill="currentColor" width="100px" height="100px" viewBox="0 0 128 128" id="Layer_1" version="1.1" xml:space="preserve"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g>
-                                <path d="M30,49c0,18.7,15.3,34,34,34s34-15.3,34-34S82.7,15,64,15S30,30.3,30,49z M90,49c0,14.3-11.7,26-26,26S38,63.3,38,49   s11.7-26,26-26S90,34.7,90,49z" />
-                                <path d="M24.4,119.4C35,108.8,49,103,64,103s29,5.8,39.6,16.4l5.7-5.7C97.2,101.7,81.1,95,64,95s-33.2,6.7-45.3,18.7L24.4,119.4z" />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="user-content">
-                        <h2 class="user-name"><?= $user['nom']?> <?=$user['prenom']?></h2>
-                        <p class="user-email"><?= $user['email'] ?></p>
-                        <p class="user-tel"><?= $user['tel'] ?></p>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div>
-            <div id="userStatusChart"></div>
-        </section>
         <!-- User Tab-->
         <section class="sectionBo2">
             <div class="table-container">
@@ -87,36 +33,6 @@
                                         <a href="<?= URL; ?>controllers/userCrud/deleteUser.php?id=<?= $user['id'] ?>" class="btn-action btn-supp"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <!-- User log + Global Log Graph -->
-        <section class="sectionBo3">
-            <div class="log-chart"></div>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Utilisateur</th>
-                            <th>Action</th>
-                            <th>Date et Heure</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        $logs = afficherLogs();
-                        foreach ($logs as $log): ?>
-                            <tr>
-                                <td><?= $log['id'] ?></td>
-                                <td><?= $log['nom'] . ' ' . $log['prenom'] ?></td>
-                                <td class="<?= $log['action'] === 'connexion' ? 'connexion-color' : 'deconnexion-color' ?>">
-                                    <?= htmlspecialchars($log['action']) ?>
-                                </td>
-                                <td><?= htmlspecialchars($log['timestamp']) ?></td>
-                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

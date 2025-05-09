@@ -29,3 +29,31 @@ function getAllProducts() {
     $pdoStatement = $pdo->query('SELECT * FROM products order by category_id');
     return $pdoStatement->fetchAll();
 }
+
+function getAllFleurs() {
+    $pdo = dbConnect();
+    $pdoStatement = $pdo->query('SELECT * FROM products WHERE category_id = 1 ORDER BY name');
+    return $pdoStatement->fetchAll();
+}
+
+function getAllTables() {
+    $pdo = dbConnect();
+    $pdoStatement = $pdo->query('SELECT * FROM products WHERE category_id = 2 ORDER BY name');
+    return $pdoStatement->fetchAll();
+}
+
+function getAllVelos() {
+    $pdo = dbConnect();
+    $pdoStatement = $pdo->query('SELECT * FROM products WHERE category_id = 3 ORDER BY name');
+    return $pdoStatement->fetchAll();
+}
+
+// Cart
+function getProductById(int $id) {
+    $pdo = dbConnect();
+    $query = 'SELECT * FROM products WHERE product_id = :id';
+    $pdoStatement = $pdo->prepare($query);
+    $pdoStatement->bindParam(':id', $id, PDO::PARAM_INT);
+    $pdoStatement->execute();
+    return $pdoStatement->fetch(PDO::FETCH_ASSOC);
+}
