@@ -82,10 +82,6 @@ function isValidFields($email, $nom, $prenom, $tel, $pass, $confirm) {
     // Validation du mot de passe
     if (empty($pass)) {
         $errors[] = "Le champ Mot de passe est requis.";
-    // } elseif (strlen($pass) < 8) {
-    //     $errors[] = "Le mot de passe doit contenir au moins 8 caractères.";
-    // } elseif (!preg_match("/[A-Z]/", $pass) || !preg_match("/[a-z]/", $pass) || !preg_match("/[0-9]/", $pass) || !preg_match("/[\W]/", $pass)) {
-    //     $errors[] = "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
     }
 
     // Validation de la confirmation du mot de passe
