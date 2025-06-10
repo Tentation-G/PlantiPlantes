@@ -122,11 +122,11 @@ http://localhost/PlantiPlantes/
 
 ```
 PlantiPlantes/
-├── core/             → Fichier config & logique MVC
-├── models/           → Connexion BDD, modèles métier
-├── views/            → Interfaces utilisateurs & admin
-├── assets/           → Images, CSS
-├── controllers/      → Logique applicative
-└── plantiplantes.sql → Base de données
+├── core/
+├── models/
+├── views/
+├── assets/
+├── controllers/
+└── plantiplantes.sql
 ```
 
