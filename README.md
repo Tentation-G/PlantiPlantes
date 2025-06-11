@@ -51,7 +51,7 @@ PlantiPlantes est un site e-commerce fictif développé pour l'entreprise artisa
 
 ## 🔐 Regles de securité
 
-# Creation de compte utilisateur
+### Creation de compte utilisateur
 
 Le mot de passe doit contenir :
 - au minimum 12 caracteres, donc au moins :
@@ -60,7 +60,7 @@ Le mot de passe doit contenir :
     - un chiffe
     - caractere special
 
-# Connexion a un compte 
+### Connexion a un compte 
 
 - Le compte est bloqué suite a 3 tentatives erronnées
 - Nouvelle tentative apres 1 minutes d'attente
@@ -69,7 +69,7 @@ Le mot de passe doit contenir :
 
 ## 🚀 Procédure de tests fonctionnels
 
-# 1. Création de compte
+### 1. Création de compte
 TF-01 – Mot de passe conforme
 Données : MotDePasse@1234Ab (16 car., maj., min., chiffre, spécial)
 Attendu : création réussie, message de confirmation.
@@ -94,7 +94,7 @@ TF-06 – Sans caractère spécial
 Données : Abcd1234abcdEFG
 Attendu : échec, “Au moins un caractère spécial requis.”
 
-# 2. Connexion
+### 2. Connexion
 TF-07 – Verrouillage après 3 échecs
 Étapes : 3 tentatives avec mot de passe incorrect
 Attendu : compte bloqué, “Compte bloqué après 3 tentatives erronées.”
