@@ -60,6 +60,57 @@ Le mot de passe doit contenir :
     - un chiffe
     - caractere special
 
+# Connexion a un compte 
+
+- Le compte est bloqué suite a 3 tentatives erronnées
+- Nouvelle tentative apres 1 minutes d'attente
+
+---
+
+## 🚀 Procédure de tests fonctionnels (version simplifiée)
+
+# 1. Création de compte
+TF-01 – Mot de passe conforme
+Données : MotDePasse@1234Ab (16 car., maj., min., chiffre, spécial)
+Attendu : création réussie, message de confirmation.
+
+TF-02 – Mot de passe trop court
+Données : Ab1@5678X9 (10 car.)
+Attendu : échec, “Le mot de passe doit contenir au moins 12 caractères.”
+
+TF-03 – Sans majuscule
+Données : abcd1234@#$%ef
+Attendu : échec, “Au moins une majuscule requise.”
+
+TF-04 – Sans minuscule
+Données : ABCD1234@#$%EF
+Attendu : échec, “Au moins une minuscule requise.”
+
+TF-05 – Sans chiffre
+Données : Abcdef@ghIJK!
+Attendu : échec, “Au moins un chiffre requis.”
+
+TF-06 – Sans caractère spécial
+Données : Abcd1234abcdEFG
+Attendu : échec, “Au moins un caractère spécial requis.”
+
+# 2. Connexion
+TF-07 – Verrouillage après 3 échecs
+Étapes : 3 tentatives avec mot de passe incorrect
+Attendu : compte bloqué, “Compte bloqué après 3 tentatives erronées.”
+
+TF-08 – Tentative avant 1 min
+Étapes : essai immédiat après TF-07
+Attendu : échec, “Compte bloqué, réessayez dans 1 minute.”
+
+TF-09 – Déblocage automatique
+Étapes : attendre 1 minute pile, puis mot de passe correct
+Attendu : connexion réussie.
+
+TF-10 – Nouvelle tentative trop tôt
+Étapes : attendre 30 s après TF-07, puis mot de passe correct
+Attendu : échec, “Compte toujours bloqué, réessayez dans XX s.”
+
 ---
 
 ## 🛠️ Technologies utilisées
