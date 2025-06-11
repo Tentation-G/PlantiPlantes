@@ -67,7 +67,7 @@ Le mot de passe doit contenir :
 
 ---
 
-## 🚀 Procédure de tests fonctionnels (version simplifiée)
+## 🚀 Procédure de tests fonctionnels
 
 # 1. Création de compte
 TF-01 – Mot de passe conforme
