@@ -97,11 +97,11 @@ Attendu : échec, “Au moins un caractère spécial requis.”
 ### 2. Connexion
 TF-07 – Verrouillage après 3 échecs
 Étapes : 3 tentatives avec mot de passe incorrect
-Attendu : compte bloqué, “Compte bloqué après 3 tentatives erronées.”
+Attendu : compte bloqué, “Email ou mot de passe incorrect. Tentative 3/3”
 
 TF-08 – Tentative avant 1 min
 Étapes : essai immédiat après TF-07
-Attendu : échec, “Compte bloqué, réessayez dans 1 minute.”
+Attendu : échec, “Votre compte est bloqué pour 1 minutes, réessayez dans 1 minute.”
 
 TF-09 – Déblocage automatique
 Étapes : attendre 1 minute pile, puis mot de passe correct
