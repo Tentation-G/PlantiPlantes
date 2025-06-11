@@ -49,6 +49,19 @@ PlantiPlantes est un site e-commerce fictif développé pour l'entreprise artisa
 
 ---
 
+## 🔐 Regles de securité
+
+# Creation de compte utilisateur
+
+Le mot de passe doit contenir :
+- au minimum 12 caracteres, donc au moins :
+    - une majuscule
+    - une minuscule
+    - un chiffe
+    - caractere special
+
+---
+
 ## 🛠️ Technologies utilisées
 
 - **Frontend** : HTML5 / CSS3  
